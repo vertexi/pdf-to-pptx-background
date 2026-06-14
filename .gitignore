@@ -5,5 +5,5 @@ venv/
 dist/
 build/
 *.egg-info/
+*.spec
 *.pptx
-

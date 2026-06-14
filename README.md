@@ -40,6 +40,31 @@ The interface provides:
 
 The conversion runs on a worker thread, so the interface remains responsive.
 
+## Windows EXE
+
+A packaged executable can run on Windows without a separate Python
+installation. Build it with:
+
+```powershell
+python -m pip install -r requirements-build.txt
+.\build_exe.ps1
+```
+
+If the desired Python executable is not named `python`, pass it explicitly:
+
+```powershell
+.\build_exe.ps1 -Python "C:\Path\To\python.exe"
+```
+
+The executable is created at:
+
+```text
+dist\PDF-to-PPTX-Background.exe
+```
+
+The EXE is unsigned, so Windows SmartScreen may show a warning when it is
+downloaded on another computer.
+
 ## Command-Line Usage
 
 ```powershell
