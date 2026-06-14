@@ -20,7 +20,27 @@ PowerPoint, VBA, and Windows COM automation are not required.
 python -m pip install -r requirements.txt
 ```
 
-## Usage
+Tkinter is included with standard Windows Python installations.
+
+## Graphical Interface
+
+Start the Tkinter application:
+
+```powershell
+python .\pdf_to_pptx_background_gui.py
+```
+
+The interface provides:
+
+- PDF and output file selection
+- Rendering resolution
+- Start page and page count
+- Output overwrite control
+- Conversion progress and completion status
+
+The conversion runs on a worker thread, so the interface remains responsive.
+
+## Command-Line Usage
 
 ```powershell
 python .\pdf_to_pptx_background.py .\slides.pdf
@@ -65,4 +85,3 @@ Run `python .\pdf_to_pptx_background.py --help` for all options.
 - Each PDF page is rasterized to PNG before being embedded as a background.
 - Text and vector graphics in the PDF are therefore not editable in PowerPoint.
 - The slide aspect ratio follows the first selected PDF page.
-

@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import io
 import sys
+from collections.abc import Callable
 from pathlib import Path
 
 import fitz
@@ -51,7 +52,8 @@ def convert_pdf(
     resolution: int,
     first_page: int,
     page_count: int | None,
-    quiet: bool,
+    quiet: bool = False,
+    progress_callback: Callable[[int, int, int], None] | None = None,
 ) -> int:
     with fitz.open(pdf_path) as document:
         total_pages = document.page_count
@@ -88,6 +90,9 @@ def convert_pdf(
 
             slide = presentation.slides.add_slide(blank_layout)
             set_slide_picture_background(slide, png_data)
+
+            if progress_callback is not None:
+                progress_callback(item_number, selected_count, page_number + 1)
 
             if not quiet:
                 print(
